@@ -28,11 +28,20 @@ public class JobTest {
         assertTrue(jobThree.getLocation() instanceof Location);
         assertTrue(jobThree.getPositionType()  instanceof PositionType);
         assertTrue(jobThree.getCoreCompetency() instanceof CoreCompetency);
-
-
-
    }
 
+   @Test
+   public void testToStringContainsCorrectLabelsAndData(){
+       Job jobThree=new Job("Product tester", new Employer("ACME"),
+               new Location("Desert"), new PositionType("Quality control"),
+               new CoreCompetency("Persistence"));
+       assertEquals(jobThree.toString(),  "ID:" +jobThree.getId() +System.lineSeparator()+
+               "Name:'" + jobThree.getName() +System.lineSeparator() +
+               "Employer=" + jobThree.getEmployer().getValue() +System.lineSeparator() +
+               "Location=" + jobThree.getLocation().getValue() +System.lineSeparator() +
+               "PositionType=" + jobThree.getPositionType().getValue() +System.lineSeparator() +
+               "CoreCompetency=" + jobThree.getCoreCompetency().getValue());
+   }
 
 
 
