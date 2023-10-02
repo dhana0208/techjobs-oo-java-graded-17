@@ -2,10 +2,9 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Job {
+public class Job extends JobField{
 
-    private int id;
-    private static int nextId = 1;
+
 
     private String name;
     private Employer employer;
@@ -15,9 +14,7 @@ public class Job {
 
 
     public Job() {
-        this.id = nextId;
-      nextId++;
-
+    super();
     }
 
 
@@ -42,21 +39,17 @@ public class Job {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id;
+        return super.getId() == job.getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(super.getId());
     }
 
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
-
-    public int getId() {
-        return id;
-    }
 
 
     public String getName() {
@@ -102,7 +95,7 @@ public class Job {
     @Override
     public String toString() {
         return
-                "ID:" + id +System.lineSeparator()+
+                "ID:" + super.getId()+System.lineSeparator()+
                 "Name:'" + name +System.lineSeparator() +
                 "Employer=" + employer +System.lineSeparator() +
                 "Location=" + location +System.lineSeparator() +
