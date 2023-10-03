@@ -7,6 +7,7 @@ public class JobField {
     private static int nextId = 1;
 
     public JobField(String value){
+        this();
         this.value= value;
 
     }
@@ -24,6 +25,6 @@ public class JobField {
     }
 
     public int getId() {
-        return id;
+        return this.id;
     }
 }

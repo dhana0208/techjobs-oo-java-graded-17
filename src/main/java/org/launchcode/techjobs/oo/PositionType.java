@@ -24,12 +24,12 @@ public class PositionType extends JobField {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PositionType that = (PositionType) o;
-        return super.getId() == that.getId();
+        return this.getId() == that.getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.getId());
+        return Objects.hash(this.getId());
     }
 
 

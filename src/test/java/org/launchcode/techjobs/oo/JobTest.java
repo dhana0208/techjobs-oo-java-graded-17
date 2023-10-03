@@ -35,12 +35,32 @@ public class JobTest {
        Job jobThree=new Job("Product tester", new Employer("ACME"),
                new Location("Desert"), new PositionType("Quality control"),
                new CoreCompetency("Persistence"));
-       assertEquals(jobThree.toString(),  "ID:" +jobThree.getId() +System.lineSeparator()+
-               "Name:'" + jobThree.getName() +System.lineSeparator() +
-               "Employer=" + jobThree.getEmployer().getValue() +System.lineSeparator() +
-               "Location=" + jobThree.getLocation().getValue() +System.lineSeparator() +
-               "PositionType=" + jobThree.getPositionType().getValue() +System.lineSeparator() +
-               "CoreCompetency=" + jobThree.getCoreCompetency().getValue());
+       assertEquals(jobThree.toString(),  System.lineSeparator()+"ID: " +jobThree.getId() +System.lineSeparator()+
+               "Name: " + jobThree.getName() +System.lineSeparator() +
+               "Employer: " + jobThree.getEmployer().getValue() +System.lineSeparator() +
+               "Location: " + jobThree.getLocation().getValue() +System.lineSeparator() +
+               "Position Type: " + jobThree.getPositionType().getValue() +System.lineSeparator() +
+               "Core Competency: " + jobThree.getCoreCompetency().getValue()+System.lineSeparator());
+   }
+
+   @Test
+   public void testToStringStartsAndEndsWithNewLine(){
+       Job jobThree=new Job("Product tester", new Employer("ACME"),
+               new Location("Desert"), new PositionType("Quality control"),
+               new CoreCompetency("Persistence"));
+       assertTrue(jobThree.toString().startsWith(System.lineSeparator()));
+       assertTrue(jobThree.toString().endsWith(System.lineSeparator()));
+   }
+
+   @Test
+   public void testJobsForEquality(){
+       Job jobThree=new Job("Product tester", new Employer("ACME"),
+               new Location("Desert"), new PositionType("Quality control"),
+               new CoreCompetency("Persistence"));
+       Job jobFour=new Job("Product tester", new Employer("ACME"),
+               new Location("Desert"), new PositionType("Quality control"),
+               new CoreCompetency("Persistence"));
+       assertNotEquals(jobThree,jobFour);
    }
 
 

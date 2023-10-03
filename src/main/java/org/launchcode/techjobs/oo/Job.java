@@ -2,9 +2,12 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Job extends JobField{
+import static java.lang.System.lineSeparator;
 
+public class Job {
 
+    private int id;
+    private static int nextId = 1;
 
     private String name;
     private Employer employer;
@@ -14,7 +17,8 @@ public class Job extends JobField{
 
 
     public Job() {
-    super();
+    this.id=nextId;
+    nextId++;
     }
 
 
@@ -39,12 +43,12 @@ public class Job extends JobField{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return super.getId() == job.getId();
+        return this.getId() == job.getId();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.getId());
+        return Objects.hash(this.getId());
     }
 
 
@@ -94,13 +98,20 @@ public class Job extends JobField{
 
     @Override
     public String toString() {
-        return
-                "ID:" + super.getId()+System.lineSeparator()+
-                "Name:'" + name +System.lineSeparator() +
-                "Employer=" + employer +System.lineSeparator() +
-                "Location=" + location +System.lineSeparator() +
-                "PositionType=" + positionType +System.lineSeparator() +
-                "CoreCompetency=" + coreCompetency ;
 
+        String emptyField = "Data not available";
+        return  lineSeparator()+
+                "ID: " + this.getId()+lineSeparator()+
+                "Name: " + (name.isEmpty()?emptyField:name) + lineSeparator() +
+                "Employer: " +(employer.getValue().isEmpty()?emptyField: employer.getValue()) + lineSeparator() +
+                "Location: " +(location.getValue().isEmpty()?emptyField: location.getValue()) + lineSeparator() +
+                "Position Type: " +(positionType.getValue().isEmpty()?emptyField: positionType.getValue()) + lineSeparator() +
+                "Core Competency: " +(coreCompetency.getValue().isEmpty()?emptyField: coreCompetency.getValue())+
+                lineSeparator();
+
+    }
+
+    public int getId() {
+        return id;
     }
 }
