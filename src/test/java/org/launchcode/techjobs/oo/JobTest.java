@@ -36,12 +36,14 @@ public class JobTest {
        Job jobThree=new Job("Product tester", new Employer("ACME"),
                new Location("Desert"), new PositionType("Quality control"),
                new CoreCompetency("Persistence"));
-       assertEquals(jobThree.toString(),  System.lineSeparator()+"ID: " +jobThree.getId() +System.lineSeparator()+
-               "Name: " + jobThree.getName() +System.lineSeparator() +
-               "Employer: " + jobThree.getEmployer().getValue() +System.lineSeparator() +
-               "Location: " + jobThree.getLocation().getValue() +System.lineSeparator() +
-               "Position Type: " + jobThree.getPositionType().getValue() +System.lineSeparator() +
-               "Core Competency: " + jobThree.getCoreCompetency().getValue()+System.lineSeparator());
+       String expected =
+        System.lineSeparator()+"ID: " +jobThree.getId() +System.lineSeparator()+
+               "Name: Product tester" +System.lineSeparator() +
+               "Employer: ACME" +System.lineSeparator() +
+               "Location: Desert" +System.lineSeparator() +
+               "Position Type: Quality control" +System.lineSeparator() +
+               "Core Competency: Persistence"+System.lineSeparator();
+      assertEquals(expected ,jobThree.toString());
    }
 
    @Test
@@ -58,12 +60,15 @@ public class JobTest {
         Job jobThree=new Job("Product tester", new Employer(""),
                 new Location(""), new PositionType("Quality control"),
                 new CoreCompetency("Persistence"));
-        assertEquals(jobThree.toString(),lineSeparator()+"ID: " +jobThree.getId() +lineSeparator()+
+        String expected =
+        lineSeparator()+"ID: " +jobThree.getId() +lineSeparator()+
                 "Name: " +"Product tester" +lineSeparator() +
                 "Employer: " +"Data not available" +lineSeparator() +
                 "Location: " + "Data not available"+lineSeparator() +
-                "Position Type: " + jobThree.getPositionType().getValue() +System.lineSeparator() +
-                "Core Competency: " + jobThree.getCoreCompetency().getValue()+System.lineSeparator());
+                "Position Type: Quality control" +System.lineSeparator() +
+                "Core Competency: Persistence"+System.lineSeparator();
+        assertEquals(expected,jobThree.toString());
+
     };
 
 
